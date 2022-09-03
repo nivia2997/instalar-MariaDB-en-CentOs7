@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "EMPEZANDO ACTUALIZACION DEL SISTEMA"
+sleep 3
+sudo yum update -y
+echo "CONFIGURANDO REPOSITORIO"
+sleep 2
+sudo tee /ec2-user/insta-aws-mariadb/instalacion-mariadb/yum.repos.d/MariaDB.repo<<EOF 
+[mariadb]
+#lista de repositorios de MariaDB 10.8 Centos - creada el 2022-09-02 17:45 UTC
+# http://mariadb.org/download/
+name = MariaDB
+baseurl = https://mirrors.gigent.com/mariadb/yum/10.8/centos7-amd64
+gpgkey= https://mirrors.gigent.com/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+EOF
+sudo yum install MariaDB-server MaeriaDB-client
+sudo systemctl enable --now mariadb 
