@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "EMPEZANDO ACTUALIZACION DEL SISTEMA"
-sleep 3
+sleep 2
 sudo yum update -y
 echo "CONFIGURANDO REPOSITORIO"
 sleep 2
